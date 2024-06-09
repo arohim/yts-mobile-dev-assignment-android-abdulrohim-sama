@@ -1,4 +1,4 @@
-package com.him.sama.myrealestateinvestment
+package com.him.sama.ytstest
 
 import org.junit.Test
 

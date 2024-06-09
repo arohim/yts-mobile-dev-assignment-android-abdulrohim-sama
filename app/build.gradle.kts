@@ -1,13 +1,13 @@
 plugins {
-    id("myrealestateinvestment.android.application")
+    id("ytstest.android.application")
     id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.him.sama.myrealestateinvestment"
+    namespace = "com.him.sama.ytstest"
 
     defaultConfig {
-        applicationId = "com.him.sama.myrealestateinvestment.app"
+        applicationId = "com.him.sama.ytstest.app"
         versionCode = 1
         versionName = "1.0"
 

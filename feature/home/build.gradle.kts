@@ -1,7 +1,7 @@
 plugins {
-    id("myrealestateinvestment.android.feature")
+    id("ytstest.android.feature")
 }
 
 android {
-    namespace = "com.him.sama.myrealestateinvestment.feature.home"
+    namespace = "com.him.sama.ytstest.feature.home"
 }

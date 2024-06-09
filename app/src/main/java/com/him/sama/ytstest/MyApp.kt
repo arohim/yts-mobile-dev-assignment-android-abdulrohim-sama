@@ -1,4 +1,4 @@
-package com.him.sama.myrealestateinvestment
+package com.him.sama.ytstest
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -13,10 +13,9 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import com.him.sama.myrealestateinvestment.common.component.MusicPlayer
-import com.him.sama.myrealestateinvestment.common.ui.theme.SpotifyJetpackComposeTheme
-import com.him.sama.myrealestateinvestment.navigation.AppNavHost
-import com.him.sama.myrealestateinvestment.navigation.BottomBar
+import com.him.sama.ytstest.common.ui.theme.SpotifyJetpackComposeTheme
+import com.him.sama.ytstest.navigation.AppNavHost
+import com.him.sama.ytstest.navigation.BottomBar
 
 @Composable
 fun MyApp() {
@@ -34,7 +33,6 @@ fun MyApp() {
                         )
                         .padding(top = 20.dp)
                 ) {
-                    MusicPlayer()
                     BottomNavigation(selectedDestination.value, onClick = {
                         selectedDestination.value = it
                     })

@@ -1,4 +1,4 @@
-package com.him.sama.myrealestateinvestment.common.ui.theme
+package com.him.sama.ytstest.common.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,9 +1,9 @@
-package com.him.sama.myrealestateinvestment.navigation
+package com.him.sama.ytstest.navigation
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import com.him.sama.myrealestateinvestment.common.ui.R.drawable
-import com.him.sama.myrealestateinvestment.common.ui.R.string
+import com.him.sama.ytstest.common.ui.R.drawable
+import com.him.sama.ytstest.common.ui.R.string
 
 
 enum class BottomBar(

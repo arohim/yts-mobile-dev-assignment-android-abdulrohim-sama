@@ -1,11 +1,11 @@
 plugins {
-    id("myrealestateinvestment.android.library")
+    id("ytstest.android.library")
     id("com.google.devtools.ksp")
-    id("myrealestateinvestment.android.library.compose")
+    id("ytstest.android.library.compose")
 }
 
 android {
-    namespace = "com.him.sama.myrealestateinvestment.common.ui"
+    namespace = "com.him.sama.ytstest.common.ui"
 }
 
 dependencies {
