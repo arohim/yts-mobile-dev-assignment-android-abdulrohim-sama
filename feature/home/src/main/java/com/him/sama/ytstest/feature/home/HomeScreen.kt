@@ -38,7 +38,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.him.sama.ytstest.common.ui.theme.SpotifyJetpackComposeTheme
+import com.him.sama.ytstest.common.ui.theme.MyJetpackComposeTheme
 import com.him.sama.ytstest.feature.home.model.Algorithm
 import com.him.sama.ytstest.feature.home.model.HomeUiState
 import com.him.sama.ytstest.feature.home.model.SampleData
@@ -77,6 +77,7 @@ private fun Body(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         AlgorithmDropdown(uiState.selectedAlgorithm, algorithms, onSelect = onSelectAlgorithm)
+        Spacer(modifier = Modifier.height(8.dp))
         SampleDataDropDown(uiState.selectedSampleData, sampleData, onSelect = onSelectSampleData)
         Spacer(modifier = Modifier.height(16.dp))
         if (uiState.isLoading) {
@@ -121,7 +122,10 @@ private fun Guide() {
                 .background(Color.Red)
         )
         Spacer(modifier = Modifier.width(5.dp))
-        Text(text = "Red color is visited")
+        Text(
+            text = "Red color is visited",
+            color = Color.Black
+        )
     }
     Row(
         modifier = Modifier,
@@ -133,7 +137,10 @@ private fun Guide() {
                 .background(Color.Black)
         )
         Spacer(modifier = Modifier.width(5.dp))
-        Text(text = "Black (0) can walk through")
+        Text(
+            text = "Black (0) can walk through",
+            color = Color.Black
+        )
     }
     Row(
         modifier = Modifier,
@@ -146,7 +153,10 @@ private fun Guide() {
                 .border(1.dp, Color.Black)
         )
         Spacer(modifier = Modifier.width(5.dp))
-        Text(text = "Black not visiting point")
+        Text(
+            text = "Black not visiting point",
+            color = Color.Black
+        )
     }
     Row(
         modifier = Modifier
@@ -158,7 +168,10 @@ private fun Guide() {
                 .background(Color.Blue)
         )
         Spacer(modifier = Modifier.width(5.dp))
-        Text(text = "Blue is the shortest path")
+        Text(
+            text = "Blue is the shortest path",
+            color = Color.Black
+        )
     }
 }
 
@@ -203,14 +216,14 @@ private fun DrawTable(
                 size = Size(width = rowSize, height = columnSize),
                 style = style
             )
-            if (style == Fill) {
-                drawRect(
-                    color = defaultLineColor,
-                    topLeft = Offset(x, y),
-                    size = Size(width = rowSize, height = columnSize),
-                    style = Stroke()
-                )
-            }
+//            if (style == Fill) {
+//                drawRect(
+//                    color = defaultLineColor,
+//                    topLeft = Offset(x, y),
+//                    size = Size(width = rowSize, height = columnSize),
+//                    style = Stroke()
+//                )
+//            }
 //            here to debug x y displaying in the correct position or not
 //            drawContext.canvas.nativeCanvas.apply {
 //                drawText(
@@ -242,7 +255,11 @@ private fun AlgorithmDropdown(
         Column(
             modifier = Modifier.fillMaxWidth(),
         ) {
-            Text(text = "Algorithm", style = MaterialTheme.typography.labelLarge)
+            Text(
+                text = "Algorithm",
+                style = MaterialTheme.typography.labelLarge,
+                color = Color.Black
+            )
             Spacer(modifier = Modifier.height(8.dp))
             ExposedDropdownMenuBox(
                 modifier = Modifier.fillMaxWidth(),
@@ -268,7 +285,12 @@ private fun AlgorithmDropdown(
                 ) {
                     list.forEach { item ->
                         DropdownMenuItem(
-                            text = { Text(text = item.algoName) },
+                            text = {
+                                Text(
+                                    text = item.algoName,
+                                    color = Color.Black
+                                )
+                            },
                             onClick = {
                                 if (item == Algorithm.BFS) {
                                     onSelect(item)
@@ -298,7 +320,10 @@ private fun SampleDataDropDown(
         Column(
             modifier = Modifier.fillMaxWidth(),
         ) {
-            Text(text = "Sample data", style = MaterialTheme.typography.labelLarge)
+            Text(
+                text = "Sample data", style = MaterialTheme.typography.labelLarge,
+                color = Color.Black
+            )
             Spacer(modifier = Modifier.height(8.dp))
             ExposedDropdownMenuBox(
                 modifier = Modifier.fillMaxWidth(),
@@ -324,7 +349,12 @@ private fun SampleDataDropDown(
                 ) {
                     list.forEach { item ->
                         DropdownMenuItem(
-                            text = { Text(text = item.dataName) },
+                            text = {
+                                Text(
+                                    text = item.dataName,
+                                    color = Color.Black
+                                )
+                            },
                             onClick = {
                                 onSelect(item)
                                 expanded = false
@@ -363,7 +393,7 @@ val testUiState = HomeUiState(
 @Preview
 @Composable
 fun PreviewBody() {
-    SpotifyJetpackComposeTheme {
+    MyJetpackComposeTheme {
         Body(testUiState, {}, {})
     }
 }

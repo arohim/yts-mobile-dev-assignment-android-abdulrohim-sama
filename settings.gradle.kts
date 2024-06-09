@@ -14,7 +14,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SpotifyJetpackCompose"
+rootProject.name = "YTS Test"
 include(":app")
 include(":common:core")
 include(":common:ui")

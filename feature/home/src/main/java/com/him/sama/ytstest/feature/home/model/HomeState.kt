@@ -11,9 +11,9 @@ data class UiPoint(
 
 enum class Algorithm(val algoName: String) {
     BFS("BFS"),
-    DFS("DFS (Not enough time)"),
-    AStar("AStar (Not enough time)"),
-    Djikstra("Djikstra (Not enough time)")
+    DFS("DFS (Not enough time to implement)"),
+    AStar("AStar (Not enough time to implement)"),
+    Djikstra("Djikstra (Not enough time to implement)")
 }
 
 enum class SampleData(val dataName: String, val grid: Array<Array<Int>>) {
@@ -25,8 +25,6 @@ enum class SampleData(val dataName: String, val grid: Array<Array<Int>>) {
         )
     ),
     Medium("Medium (100x100)", Array(100) { Array(100) { 1 } }),
-    Large("Large (500x500)", Array(500) { Array(500) { 1 } }),
-    XLarge("XLarge (1000x1000)", Array(1000) { Array(1000) { 1 } }),
     NoPath(
         "NoPath", arrayOf(
             arrayOf(1, 1, 1, 1, 1),
@@ -44,6 +42,8 @@ enum class SampleData(val dataName: String, val grid: Array<Array<Int>>) {
             arrayOf(0, 0, 1, 1)
         )
     ),
+    Large("Large (500x500)", Array(500) { Array(500) { 1 } }),
+    XLarge("XLarge (1000x1000)", Array(1000) { Array(1000) { 1 } })
 }
 
 data class HomeUiState(
