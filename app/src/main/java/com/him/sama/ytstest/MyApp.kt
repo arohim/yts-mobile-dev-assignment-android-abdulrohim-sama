@@ -32,11 +32,7 @@ fun MyApp() {
                             brush = Brush.verticalGradient(listOf(Color.Transparent, Color.Black))
                         )
                         .padding(top = 20.dp)
-                ) {
-                    BottomNavigation(selectedDestination.value, onClick = {
-                        selectedDestination.value = it
-                    })
-                }
+                ) {}
             }
         ) {
             AppNavHost(
