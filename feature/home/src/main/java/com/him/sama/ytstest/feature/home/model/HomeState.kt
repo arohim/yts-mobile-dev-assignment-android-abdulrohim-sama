@@ -26,7 +26,7 @@ enum class SampleData(val dataName: String, val grid: Array<Array<Int>>) {
     ),
     Medium("Medium (100x100)", Array(100) { Array(100) { 1 } }),
     NoPath(
-        "NoPath", arrayOf(
+        "NoPath (5x5)", arrayOf(
             arrayOf(1, 1, 1, 1, 1),
             arrayOf(0, 0, 0, 1, 1),
             arrayOf(0, 0, 0, 1, 1),
@@ -35,7 +35,7 @@ enum class SampleData(val dataName: String, val grid: Array<Array<Int>>) {
         )
     ),
     MultiplePath(
-        "Multiple path", arrayOf(
+        "Multiple path (4x4)", arrayOf(
             arrayOf(1, 1, 1, 1),
             arrayOf(1, 1, 0, 1),
             arrayOf(1, 1, 1, 1),

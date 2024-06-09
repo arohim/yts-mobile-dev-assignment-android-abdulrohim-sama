@@ -147,7 +147,7 @@ private fun Guide(uiState: HomeUiState) {
         )
         Spacer(modifier = Modifier.width(5.dp))
         Text(
-            text = "Black not visiting point",
+            text = "Blank not visiting point",
             color = Color.Black
         )
     }
