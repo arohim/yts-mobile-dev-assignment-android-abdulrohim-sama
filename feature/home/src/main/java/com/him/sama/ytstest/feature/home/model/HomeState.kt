@@ -51,6 +51,7 @@ data class HomeUiState(
     val rowSize: Int = 0,
     val columnSize: Int = 0,
     val uiPoints: List<UiPoint> = listOf(),
+    val algorithmRanMs: Long = -1L,
     val selectedAlgorithm: Algorithm = Algorithm.BFS,
     val selectedSampleData: SampleData = SampleData.Small
 )

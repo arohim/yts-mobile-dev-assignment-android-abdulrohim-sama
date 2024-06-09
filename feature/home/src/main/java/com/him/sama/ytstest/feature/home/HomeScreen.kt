@@ -15,18 +15,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExposedDropdownMenuBox
-import androidx.compose.material3.ExposedDropdownMenuDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -39,6 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.him.sama.ytstest.common.ui.theme.MyJetpackComposeTheme
+import com.him.sama.ytstest.feature.home.component.AlgorithmDropdown
+import com.him.sama.ytstest.feature.home.component.SampleDataDropDown
 import com.him.sama.ytstest.feature.home.model.Algorithm
 import com.him.sama.ytstest.feature.home.model.HomeUiState
 import com.him.sama.ytstest.feature.home.model.SampleData
@@ -80,23 +72,24 @@ private fun Body(
         Spacer(modifier = Modifier.height(8.dp))
         SampleDataDropDown(uiState.selectedSampleData, sampleData, onSelect = onSelectSampleData)
         Spacer(modifier = Modifier.height(16.dp))
-        if (uiState.isLoading) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.White)
-                    .padding(16.dp),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text("Processing...")
-            }
-        } else {
-            Column(
-                modifier = Modifier,
-            ) {
-                Guide()
-                Spacer(modifier = Modifier.height(16.dp))
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.White),
+        ) {
+            Guide(uiState)
+            Spacer(modifier = Modifier.height(16.dp))
+            if (uiState.isLoading) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight(0.65f),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text("Processing...")
+                }
+            } else {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -111,7 +104,7 @@ private fun Body(
 }
 
 @Composable
-private fun Guide() {
+private fun Guide(uiState: HomeUiState) {
     Row(
         modifier = Modifier,
     ) {
@@ -173,8 +166,18 @@ private fun Guide() {
             color = Color.Black
         )
     }
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.End
+    ) {
+        Text(
+            text = "Algorithm ran (ms): ${uiState.algorithmRanMs}",
+            color = Color.Black
+        )
+    }
 }
 
+// Drawing table with large data causing UI laggy need to optimize not enough time to investigate
 @Composable
 private fun DrawTable(
     row: Int,
@@ -236,133 +239,6 @@ private fun DrawTable(
 //                    }
 //                )
 //            }
-        }
-    }
-}
-
-@Composable
-@OptIn(ExperimentalMaterial3Api::class)
-private fun AlgorithmDropdown(
-    selected: Algorithm,
-    list: Array<Algorithm>,
-    onSelect: (Algorithm) -> Unit
-) {
-    var expanded by remember { mutableStateOf(false) }
-
-    Box(
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            Text(
-                text = "Algorithm",
-                style = MaterialTheme.typography.labelLarge,
-                color = Color.Black
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            ExposedDropdownMenuBox(
-                modifier = Modifier.fillMaxWidth(),
-                expanded = expanded,
-                onExpandedChange = {
-                    expanded = !expanded
-                }
-            ) {
-                TextField(
-                    value = selected.algoName,
-                    onValueChange = {},
-                    readOnly = true,
-                    trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                    modifier = Modifier
-                        .menuAnchor()
-                        .fillMaxWidth()
-                )
-
-                ExposedDropdownMenu(
-                    modifier = Modifier.fillMaxWidth(),
-                    expanded = expanded,
-                    onDismissRequest = { expanded = false }
-                ) {
-                    list.forEach { item ->
-                        DropdownMenuItem(
-                            text = {
-                                Text(
-                                    text = item.algoName,
-                                    color = Color.Black
-                                )
-                            },
-                            onClick = {
-                                if (item == Algorithm.BFS) {
-                                    onSelect(item)
-                                }
-                                expanded = false
-                            }
-                        )
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-@OptIn(ExperimentalMaterial3Api::class)
-private fun SampleDataDropDown(
-    selected: SampleData,
-    list: Array<SampleData>,
-    onSelect: (SampleData) -> Unit
-) {
-    var expanded by remember { mutableStateOf(false) }
-
-    Box(
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            Text(
-                text = "Sample data", style = MaterialTheme.typography.labelLarge,
-                color = Color.Black
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            ExposedDropdownMenuBox(
-                modifier = Modifier.fillMaxWidth(),
-                expanded = expanded,
-                onExpandedChange = {
-                    expanded = !expanded
-                }
-            ) {
-                TextField(
-                    value = selected.dataName,
-                    onValueChange = {},
-                    readOnly = true,
-                    trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                    modifier = Modifier
-                        .menuAnchor()
-                        .fillMaxWidth()
-                )
-
-                ExposedDropdownMenu(
-                    modifier = Modifier.fillMaxWidth(),
-                    expanded = expanded,
-                    onDismissRequest = { expanded = false }
-                ) {
-                    list.forEach { item ->
-                        DropdownMenuItem(
-                            text = {
-                                Text(
-                                    text = item.dataName,
-                                    color = Color.Black
-                                )
-                            },
-                            onClick = {
-                                onSelect(item)
-                                expanded = false
-                            }
-                        )
-                    }
-                }
-            }
         }
     }
 }

@@ -20,6 +20,8 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import kotlin.time.Duration
+import kotlin.time.measureTime
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
@@ -41,8 +43,12 @@ class HomeViewModel @Inject constructor(
             val grid = sampleData.grid
             val algorithm = getAlgorithm(selectedAlgorithm)
             val uiPoints = mutableListOf<UiPoint>()
+            var algorithmRanMs: Duration? = null
             withContext(Dispatchers.Default) {
-                val shortestPath = algorithm.execute(grid)
+                var shortestPath = listOf<Point>()
+                algorithmRanMs = measureTime {
+                    shortestPath = algorithm.execute(grid)
+                }
                 grid.forEachIndexed { rowIndx, row ->
                     row.forEachIndexed { colIndx, col ->
                         uiPoints.add(
@@ -61,7 +67,8 @@ class HomeViewModel @Inject constructor(
                 isLoading = false,
                 rowSize = grid.size,
                 columnSize = grid.first().size,
-                uiPoints = uiPoints
+                uiPoints = uiPoints,
+                algorithmRanMs = algorithmRanMs?.inWholeMilliseconds ?: -1L
             )
         }
 
