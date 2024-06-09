@@ -18,6 +18,9 @@ dependencies {
     api(libs.androidx.ui.graphics)
     api(libs.androidx.compose.ui.tooling.preview)
     api(libs.androidx.compose.material3)
+    api(libs.hilt.navigation.compose)
+    api(libs.androidx.lifecycle.viewmodel.compose)
+    api(libs.androidx.lifecycle.runtime.compose)
 
     // Android Studio Preview support
     debugApi(libs.androidx.compose.ui.tooling.preview)

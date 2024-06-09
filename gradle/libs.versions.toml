@@ -77,6 +77,7 @@ jjwt-api = "io.jsonwebtoken:jjwt-api:0.10.7"
 jjwt-orgjson = "io.jsonwebtoken:jjwt-orgjson:0.10.7"
 junit = "junit:junit:4.13.2"
 androidx-espresso-core = "androidx.test.espresso:espresso-core:3.5.1"
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test" }
 mockk = "io.mockk:mockk:1.13.7"
 kotlinx-coroutines-test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1"
 

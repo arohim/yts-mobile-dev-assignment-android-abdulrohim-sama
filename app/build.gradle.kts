@@ -1,6 +1,7 @@
 plugins {
     id("ytstest.android.application")
     id("org.jetbrains.kotlin.android")
+    id("ytstest.android.hilt")
 }
 
 android {
