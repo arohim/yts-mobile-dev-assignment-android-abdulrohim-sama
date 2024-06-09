@@ -16,11 +16,34 @@ enum class Algorithm(val algoName: String) {
     Djikstra("Djikstra (Not enough time)")
 }
 
-enum class SampleData(val dataName: String) {
-    Small("Small (5x5)"),
-    Large("Large (1000x1000)"),
-    NoPath("NoPath"),
-    MultiplePath("Mutiple path"),
+enum class SampleData(val dataName: String, val grid: Array<Array<Int>>) {
+    Small(
+        "Small (5x5)", arrayOf(
+            arrayOf(1, 1, 1),
+            arrayOf(1, 0, 0),
+            arrayOf(1, 1, 1)
+        )
+    ),
+    Medium("Medium (100x100)", Array(100) { Array(100) { 1 } }),
+    Large("Large (500x500)", Array(500) { Array(500) { 1 } }),
+    XLarge("XLarge (1000x1000)", Array(1000) { Array(1000) { 1 } }),
+    NoPath(
+        "NoPath", arrayOf(
+            arrayOf(1, 1, 1, 1, 1),
+            arrayOf(0, 0, 0, 1, 1),
+            arrayOf(0, 0, 0, 1, 1),
+            arrayOf(1, 1, 1, 0, 0),
+            arrayOf(1, 1, 1, 0, 0)
+        )
+    ),
+    MultiplePath(
+        "Multiple path", arrayOf(
+            arrayOf(1, 1, 1, 1),
+            arrayOf(1, 1, 0, 1),
+            arrayOf(1, 1, 1, 1),
+            arrayOf(0, 0, 1, 1)
+        )
+    ),
 }
 
 data class HomeUiState(

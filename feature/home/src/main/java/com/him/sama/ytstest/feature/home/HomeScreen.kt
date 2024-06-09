@@ -270,7 +270,9 @@ private fun AlgorithmDropdown(
                         DropdownMenuItem(
                             text = { Text(text = item.algoName) },
                             onClick = {
-                                onSelect(item)
+                                if (item == Algorithm.BFS) {
+                                    onSelect(item)
+                                }
                                 expanded = false
                             }
                         )

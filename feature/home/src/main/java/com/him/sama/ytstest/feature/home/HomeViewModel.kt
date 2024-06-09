@@ -38,7 +38,7 @@ class HomeViewModel @Inject constructor(
     private fun process(sampleData: SampleData, selectedAlgorithm: Algorithm) =
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isLoading = true)
-            val grid = getSampleData(sampleData)
+            val grid = sampleData.grid
             val algorithm = getAlgorithm(selectedAlgorithm)
             val uiPoints = mutableListOf<UiPoint>()
             withContext(Dispatchers.Default) {
@@ -71,32 +71,6 @@ class HomeViewModel @Inject constructor(
             DFS -> TODO()
             AStar -> TODO()
             Djikstra -> TODO()
-        }
-    }
-
-    private fun getSampleData(sampleData: SampleData): Array<Array<Int>> {
-        return when (sampleData) {
-            SampleData.Small -> arrayOf(
-                arrayOf(1, 1, 1),
-                arrayOf(1, 0, 0),
-                arrayOf(1, 1, 1)
-            )
-
-            SampleData.Large -> Array(100) { Array(100) { 1 } }
-            SampleData.NoPath -> arrayOf(
-                arrayOf(1, 1, 1, 1, 1),
-                arrayOf(0, 0, 0, 1, 1),
-                arrayOf(0, 0, 0, 1, 1),
-                arrayOf(1, 1, 1, 0, 0),
-                arrayOf(1, 1, 1, 0, 0)
-            )
-
-            SampleData.MultiplePath -> arrayOf(
-                arrayOf(1, 1, 1, 1),
-                arrayOf(1, 1, 0, 1),
-                arrayOf(1, 1, 1, 1),
-                arrayOf(0, 0, 1, 1)
-            )
         }
     }
 
