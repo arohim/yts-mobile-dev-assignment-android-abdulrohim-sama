@@ -13,10 +13,17 @@ https://github.com/arohim/yts-mobile-dev-assignment-android-abdulrohim-sama/asse
 
 ## Source code structure
 
-- `common/core/src/main/java/com/him/sama/ytstest/core/searchalgorithm/` this path contains the
-  actual code
-- `common/core/src/test/java/com/him/sama/ytstest/core/searchalgorithm/` this path contains unit
-  testing
+common
+└── core
+    └── src
+        └── main
+            └── java/com/him/sama/ytstest/core/searchalgorithm
+                └── BreadthFirstSearch.kt (Algorithm)
+                └── Point.kt (Data model)
+                └── ShortestPathFinder.kt (Interface)
+        └── test (contains unit testing)
+            └── java/com/him/sama/ytstest/core/searchalgorithm
+                └── UnitTesting.kt
 
 ## Prerequisite
 
