@@ -7,7 +7,8 @@ I've tested on the android app with 1000x1000 it take a lot of time to render, b
 testing of debug the code the algorithm is ran completed only the drawing part is still processing
 
 ## Demo
-https://github.com/arohim/yts-mobile-dev-assignment-android-abdulrohim-sama/assets/4177366/3409f948-534b-489e-b07a-4287782352c0
+https://github.com/arohim/yts-mobile-dev-assignment-android-abdulrohim-sama/assets/4177366/07feb089-0620-41c5-8746-2c56d6f8656f
+
 
 
 ## Source code structure
